@@ -35,11 +35,16 @@
     </style>
   </head>
   <body>
+    <button id="toggleButton" onclick="toggle()">Toggle</button>
 
-
-    <a-scene id="markerScene" embedded arjs style="display: block;">
-      <a-marker-camera preset='hiro'></a-marker-camera>
-      <a-box position="0 0.5 0" material="opacity: 1;"></a-box>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-camera gps-new-camera id="gpsCam"></a-camera>
+      <a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place="latitude: -34.8897600; longitude: -56.1554300" scale="10 10 10"></a-entity>
+      
+      <a-marker preset="hiro" id="hiroMarker" visible="false">
+        <a-box color="blue" position="0 0.5 0"></a-box>
+      </a-marker>
     </a-scene>
+
   </body>
 </html>

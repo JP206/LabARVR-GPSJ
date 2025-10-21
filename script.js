@@ -1,15 +1,9 @@
-var gps = true
+let modoHiro = false;
 
 function toggle() {
-  if (gps) {
-    document.getElementById('markerScene').style.display = 'block';
-    document.getElementById('gpsScene').style.display = 'none';
-    gps = false;
-  }
-  else {
-    document.getElementById('gpsScene').style.display = 'block';
-    document.getElementById('markerScene').style.display = 'none';
-    gps = true;
-  }
-  
+  modoHiro = !modoHiro;
+  document.getElementById("gpsBox").setAttribute("visible", !modoHiro);
+  document.getElementById("hiroMarker").setAttribute("visible", modoHiro);
+  document.getElementById("toggleButton").textContent = 
+    modoHiro ? "Cambiar a modo GPS" : "Cambiar a modo Hiro";
 }
