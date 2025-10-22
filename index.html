@@ -1,14 +1,49 @@
-<!-- include A-Frame obviously -->
-<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-<!-- include ar.js for A-Frame -->
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
-    <a-marker-camera preset='hiro'></a-marker-camera>
-    
-    <a-entity position="0 0 0" rotation="-90 0 0" look-at="[camera]">
-      <a-box position="0 0 0" color="red"></a-box>
-      <a-text value="Caja Roja" position="0 1.5 0" align="center"></a-text>
-    </a-entity>
+<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+<script src="script.js"></script>
+<link rel="stylesheet" href="styles.css">
+
+<body style='margin:0; overflow:hidden;'>
+  <a-scene embedded arjs='sourceType: webcam;'>
+    <a-marker preset='hiro'>
+
+      <a-entity material='opacity: 1;' id="caja1" rotation="-90 0 0">
+        <a-box position='0 0.5 0' color="red"></a-box>
+        <a-text value="Caja Roja" color="black" position="0 1.5 0" allign="center"></a-text>
+      </a-entity>
+    </a-marker>
+
+    <a-marker type="pattern" url="markers/fig1.patt">
+      <a-entity id="fig1" geometry="primitive: box" material="color: red" position="0 0.5 0"></a-entity>
+    </a-marker>
+
+    <a-marker type="pattern" url="markers/fig2.patt" id="fig2">
+      <a-box color="green" position="0 0.5 0"></a-box>
+    </a-marker>
+
+    <a-marker type="pattern" url="markers/fig3.patt" id="fig3">
+      <a-box color="blue" position="0 0.5 0"></a-box>
+    </a-marker>
+    <a-camera-static></a-camera-static>
   </a-scene>
+
+  <button id="uiButton"
+        style="
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 12px 24px;
+          font-size: 16px;
+          display: none;
+        ">
+  Continuar
+</button>
+
+ <div id="formulario">
+      <h3>Elegí una opción:</h3>
+      <button class="opcion" onclick="seleccionar('Opción 1')">Opción 1</button>
+      <button class="opcion" onclick="seleccionar('Opción 2')">Opción 2</button>
+      <button class="opcion" onclick="seleccionar('Opción 3')">Opción 3</button>
+    </div>
 </body>
