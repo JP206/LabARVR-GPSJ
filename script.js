@@ -101,6 +101,7 @@ function saleLlave3() {
 function seleccionarJugador(opcion) {
   numJugador = opcion;
 
+  document.getElementById('btnCartelMisiones').style.display = 'block';
   actualizarHTMLsegunJugador();
 
   const formulario = document.getElementById("formularioInicial");

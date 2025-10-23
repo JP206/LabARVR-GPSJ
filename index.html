@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="styles.css">
 
 <body style='margin:0; overflow:hidden;'>
-  <a-scene embedded arjs='sourceType: webcam;'>
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; vr-mode-ui="enabled: false"'>
 
     <a-marker id="marcador1" type="pattern" url="Markers/fig1.patt">
       <a-entity id="fig1" geometry="primitive: box;" material="color: red" position="0 0.5 0"></a-entity>
@@ -53,13 +53,14 @@
 
   <div id="formularioInicial">
     <h3>Elegí una opción:</h3>
-    <button class="opcion" onclick="seleccionarJugador(1)">Opción 1</button>
-    <button class="opcion" onclick="seleccionarJugador(2)">Opción 2</button>
-    <button class="opcion" onclick="seleccionarJugador(3)">Opción 3</button>
+    <button class="opcion" onclick="seleccionarJugador(1)">Jugador rojo</button>
+    <button class="opcion" onclick="seleccionarJugador(2)">Jugador azul</button>
+    <button class="opcion" onclick="seleccionarJugador(3)">Jugador verde</button>
+    <h5>Debe haber uno de cada uno</h6>
   </div>
 
   <div id="cartelMisiones">
-    <h3>Ubicaciones de las llaves:</h3>
+    <h3>Debes buscar estos marcadores para obtener el tesoro</h3>
     <ul>
       <li>
         Donde el hambre y la sed perecen
@@ -72,6 +73,10 @@
       <li>
         Donde antaño había una institución bancaria
         <img src="Imagenes/fig3.png" style="display: block; margin-top: 5px;">
+      </li>
+      <li>
+        El tesoro se encuentra en el salón interdisciplinario de introducción a la ingeniería
+        <img src="Imagenes/fig4.png" style="display: block; margin-top: 5px;">
       </li>
     </ul>
   </div>
