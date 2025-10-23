@@ -44,7 +44,7 @@ window.addEventListener("load", () => {
       const objeto = document.querySelector("#fig1");
       objeto.removeAttribute("geometry");
       objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "modelos/llave1.glb");
+      objeto.setAttribute("gltf-model", "Modelos/llave1.glb");
     }
     else if (enLlave2) {
       tieneLlave2 = true;
@@ -52,7 +52,7 @@ window.addEventListener("load", () => {
       const objeto = document.querySelector("#fig2");
       objeto.removeAttribute("geometry");
       objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "modelos/llave2.glb");
+      objeto.setAttribute("gltf-model", "Modelos/llave2.glb");
     }
     else if (enLlave3) {
       tieneLlave3 = true;
@@ -60,7 +60,7 @@ window.addEventListener("load", () => {
       const objeto = document.querySelector("#fig3");
       objeto.removeAttribute("geometry");
       objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "modelos/llave3.glb");
+      objeto.setAttribute("gltf-model", "Modelos/llave3.glb");
     }
 
     botonReclamarLlave.style.display = 'none';
