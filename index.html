@@ -6,29 +6,36 @@
 <body style='margin:0; overflow:hidden;'>
   <a-scene embedded arjs='sourceType: webcam;'>
 
-    <a-marker type="pattern" url="Markers/fig1.patt">
-      <a-entity id="fig1" gltf-model="Modelos/llave2.glb" material="color: red" position="0 0.5 0"></a-entity>
-      <a-text value="Caja Roja" color="black" position="0 1.5 0" allign="center"></a-text>
+    <a-marker id="marcador1" type="pattern" url="Markers/fig1.patt">
+      <a-entity id="fig1" geometry="primitive: box;" material="color: red" position="0 0.5 0"></a-entity>
+      <a-text id="textoFig1" value="Caja azul" color="black" position="0 1.5 0" align="center"></a-text>
     </a-marker>
 
-    <a-marker type="pattern" url="Markers/fig2.patt" id="fig2">
-      <a-entity id="fig1" gltf-model="Modelos/candado2.glb" material="color: red" position="0 0.5 0"></a-entity>
+    <a-marker id="marcador2" type="pattern" url="Markers/fig2.patt">
+      <a-entity id="fig2" geometry="primitive: cone;" material="color: red" position="0 0.5 0"></a-entity>
     </a-marker>
 
-    <a-marker type="pattern" url="Markers/fig3.patt" id="fig3">
-      <a-entity id="fig1" gltf-model="Modelos/candado3.glb" material="color: red" position="0 0.5 0"></a-entity>
+    <a-marker id="marcador3" type="pattern" url="Markers/fig3.patt">
+      <a-entity id="fig3" geometry="primitive: box;" material="color: yellow" position="0 0.5 0"></a-entity>
     </a-marker>
 
     <a-camera-static></a-camera-static>
 
   </a-scene>
 
-  <button id="botonReclamarLlave">Reclamar llave</button>
+  <button id="botonReclamarLlave" onclick="reclamarLlave()">Reclamar llave</button>
 
- <div id="formulario">
-      <h3>Elegí una opción:</h3>
-      <button class="opcion" onclick="seleccionar('Opción 1')">Opción 1</button>
-      <button class="opcion" onclick="seleccionar('Opción 2')">Opción 2</button>
-      <button class="opcion" onclick="seleccionar('Opción 3')">Opción 3</button>
-    </div>
+ <div id="formularioLlave">
+    <h3>Elegí una opción:</h3>
+    <button class="opcion" onclick="seleccionar('opcion1')">Opción 1</button>
+    <button class="opcion" onclick="seleccionar('opcion2')">Opción 2</button>
+    <button class="opcion" onclick="seleccionar('opcion3')">Opción 3</button>
+  </div>
+
+  <div id="formularioInicial">
+    <h3>Elegí una opción:</h3>
+    <button class="opcion" onclick="seleccionarJugador(1)">Opción 1</button>
+    <button class="opcion" onclick="seleccionarJugador(2)">Opción 2</button>
+    <button class="opcion" onclick="seleccionarJugador(3)">Opción 3</button>
+  </div>
 </body>
