@@ -1,8 +1,7 @@
 #formulario {
     position: fixed;
-    top: 50%;
+    bottom: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     padding: 20px 30px;
@@ -27,4 +26,14 @@
     color: white;
     font-size: 16px;
     cursor: pointer;
+}
+
+#botonReclamarLlave {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    font-size: 16px;
+    display: none;
 }
