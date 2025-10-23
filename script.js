@@ -32,6 +32,13 @@ window.addEventListener("load", () => {
       }
     });
   });
+
+  const boton = document.getElementById("btnCartelMisiones");
+  const cartel = document.getElementById("cartelMisiones");
+
+  boton.addEventListener("click", () => {
+    cartel.classList.toggle("show");
+  });
 });
 
 // funciones para cuando ve el marcador
