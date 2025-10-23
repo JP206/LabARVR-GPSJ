@@ -42,6 +42,7 @@ function entraLlave1() {
     const formulario = document.getElementById("formularioLlave");
     formulario.style.display = "block";
     cargarFormulario();
+    mostrarFormularioLlave()
   }
 }
 
@@ -52,6 +53,7 @@ function entraLlave2() {
     const formulario = document.getElementById("formularioLlave");
     formulario.style.display = "block";
     cargarFormulario();
+    mostrarFormularioLlave()
   }
 }
 
@@ -62,6 +64,7 @@ function entraLlave3() {
     const formulario = document.getElementById("formularioLlave");
     formulario.style.display = "block";
     cargarFormulario();
+    mostrarFormularioLlave()
   }
 }
 
@@ -70,21 +73,21 @@ function saleLlave1() {
   enLlave1 = false;
 
   const formulario = document.getElementById("formularioLlave");
-  formulario.style.display = "none";
+  ocultarFormularioLlave()
 }
 
 function saleLlave2() {
   enLlave2 = false;
 
   const formulario = document.getElementById("formularioLlave");
-  formulario.style.display = "none";
+  ocultarFormularioLlave()
 }
 
 function saleLlave3() {
   enLlave3 = false;
 
   const formulario = document.getElementById("formularioLlave");
-  formulario.style.display = "none";
+  focultarFormularioLlave()
 }
 
 //formulario inicial
@@ -250,4 +253,16 @@ function reclamarLlave() {
 
     let botonReclamarLlave = document.getElementById("botonReclamarLlave");
     botonReclamarLlave.style.display = 'none';
+}
+
+function mostrarFormularioLlave() {
+    const formulario = document.getElementById('formularioLlave');
+    formulario.classList.add('hacerVisible'); // se mueve al bottom:10%
+    formulario.classList.remove('desaparecer');
+}
+
+function ocultarFormularioLlave() {
+    const formulario = document.getElementById('formularioLlave');
+    formulario.classList.remove('hacerVisible');
+    formulario.classList.add('desaparecer');
 }
