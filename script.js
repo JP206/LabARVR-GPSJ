@@ -190,6 +190,8 @@ function actualizarHTMLsegunJugador() {
   let fig3 = document.getElementById("fig3");
   let textoFig1 = document.getElementById("textoFig1");
 
+  let color = '#ffffff';
+
   if (numJugador === 1) {
     fig1.setAttribute("material", "color: blue");
     fig1.setAttribute("geometry", "primitive: box;");
@@ -200,6 +202,8 @@ function actualizarHTMLsegunJugador() {
 
     fig3.setAttribute("geometry", "primitive: torus;");
     fig3.setAttribute("material", "color: yellow");
+
+    color = '#ff004c';
   }
   else if (numJugador === 2) {
     fig1.setAttribute("material", "color: red");
@@ -211,6 +215,8 @@ function actualizarHTMLsegunJugador() {
 
     fig3.setAttribute("geometry", "primitive: torus;");
     fig3.setAttribute("material", "color: white");
+
+    color = '#00aaff';
   }
   else if (numJugador === 3) {
     fig1.setAttribute("material", "color: green");
@@ -222,7 +228,16 @@ function actualizarHTMLsegunJugador() {
 
     fig3.setAttribute("geometry", "primitive: torus;");
     fig3.setAttribute("material", "color: pink");
+
+    color = '#00ff66';
   }
+
+  // Aplica el color al root
+  document.documentElement.style.setProperty('--color-principal', color);
+
+  // Ajusta brillo dinámico
+  const brillo = `0 0 15px ${color}, 0 0 30px ${color}`;
+  document.documentElement.style.setProperty('--brillo', brillo);
 }
 
 function reclamarLlave() {
