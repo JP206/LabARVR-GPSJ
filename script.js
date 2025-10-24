@@ -339,10 +339,6 @@ function aparecerLlaves(llave) {
   }
 }
 
-function desbloquearTesoro() {
-  console.log("Tesoro desbloqueado");
-}
-
 function sincronizarLlavesMarcador4() {
   // Ocultar todas las llaves primero
   document.querySelector('#llave1').setAttribute('visible', false);
@@ -353,4 +349,49 @@ function sincronizarLlavesMarcador4() {
   if (tieneLlave1) aparecerLlaves(1);
   if (tieneLlave2) aparecerLlaves(2);
   if (tieneLlave3) aparecerLlaves(3);
+}
+
+function animarLlaveHaciaCandadoSimple(idLlave, idCandado) {
+  const llave = document.querySelector(`#${idLlave}`);
+  const candado = document.querySelector(`#${idCandado}`);
+  
+  if (!llave || !candado) return;
+  
+  const posCandado = candado.getAttribute('position');
+  
+  // Una sola animación que combine movimiento y desaparición
+  llave.setAttribute('animation', {
+    property: 'position',
+    to: `${posCandado.x} ${posCandado.y} ${posCandado.z}`,
+    dur: 1000,
+    easing: 'easeInOutQuad'
+  });
+  
+  // Hacer la llave más pequeña mientras se mueve
+  llave.setAttribute('animation__scale', {
+    property: 'scale',
+    to: '0 0 0',
+    dur: 1000,
+    easing: 'easeInQuad'
+  });
+  
+  // Ocultar después de la animación
+  setTimeout(() => {
+    llave.setAttribute('visible', false);
+  }, 1000);
+}
+
+function desbloquearTesoro() {
+  console.log("Tesoro desbloqueado");
+  
+  const botonDesbloquearTesoro = document.getElementById("botonDesbloquearTesoro");
+  botonDesbloquearTesoro.style.display = 'none';
+  
+  // Animar todas las llaves simultáneamente
+  if (tieneLlave1) animarLlaveHaciaCandadoSimple('llave1', 'candado1');
+  if (tieneLlave2) animarLlaveHaciaCandadoSimple('llave2', 'candado2');
+  if (tieneLlave3) animarLlaveHaciaCandadoSimple('llave3', 'candado3');
+  
+  // Mostrar mensaje de éxito
+  setTimeout(mostrarTesoroDesbloqueado, 1200);
 }
