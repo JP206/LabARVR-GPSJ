@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="styles.css">
 
 <body style='margin:0; overflow:hidden;'>
+
+  <div id="overlayInicio">
+    <img src="Imagenes/comic1.png" id="imagenComic">
+    <button id="botonComic" onclick="continuarComic()">Continuar</button>
+  </div>
+
   <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; vr-mode-ui="enabled: false"'>
 
     <a-marker id="marcador1" type="pattern" url="Markers/fig1.patt">
@@ -38,8 +44,50 @@
         <a-animation attribute="position" direction="alternate" dur="2300" repeat="indefinite" to="1.5 0 -0.4"></a-animation>
         <a-animation attribute="rotation" direction="alternate" dur="2500" repeat="indefinite" to="100 0 190"></a-animation>
         <a-entity id="llave3" gltf-model="Modelos/llave1.glb" position="-0.3 0 0" scale="1 1 1" visible="false"></a-entity>
+      </a-entity> 
+
+      <a-entity id="tesoro" gltf-model="Modelos/tesoro.glb" position="0 0 0" rotation="0 -90 90" scale="5 5 5" visible="false">
+        <a-entity position="0 0.5 0" rotation="0 90 0" scale="0.2 0.2 0.2">
+          <a-plane
+            id="panelTron"
+            width="2.5"
+            height="1.2"
+            color="#00ffff"
+            opacity="0.15"
+            material="shader: flat; transparent: true; side: double;"
+          >
+          </a-plane>
+  
+          <!-- Borde brillante -->
+          <a-ring
+            position="0 0 0.01"
+            color="#00ffff"
+            radius-inner="1.24"
+            radius-outer="1.26"
+            rotation="0 0 0"
+            opacity="0.9"
+          ></a-ring>
+  
+          <!-- Texto -->
+          <a-text
+            value="¡Desbloqueaste el tesoro!"
+            align="center"
+            color="#ffffff"
+            position="0 0.3 0.02"
+            width="3"
+            shader="msdf"
+          ></a-text>
+  
+          <a-text
+            value="Errores: 5   Tiempo: 02:15"
+            align="center"
+            color="#00ffff"
+            position="0 -0.1 0.02"
+            width="3"
+            shader="msdf"
+          ></a-text>
+        </a-entity>
       </a-entity>
-      
     </a-marker>
 
     <a-camera-static></a-camera-static>

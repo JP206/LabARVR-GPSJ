@@ -7,6 +7,10 @@ let tieneLlave3 = false;
 
 let numJugador = -1;
 
+let tiempoInicio = 0;
+
+let pasoComic = 1;
+
 window.addEventListener("load", () => {
   const markers = document.querySelectorAll("a-marker");
 
@@ -351,47 +355,45 @@ function sincronizarLlavesMarcador4() {
   if (tieneLlave3) aparecerLlaves(3);
 }
 
-function animarLlaveHaciaCandadoSimple(idLlave, idCandado) {
-  const llave = document.querySelector(`#${idLlave}`);
-  const candado = document.querySelector(`#${idCandado}`);
-  
-  if (!llave || !candado) return;
-  
-  const posCandado = candado.getAttribute('position');
-  
-  // Una sola animación que combine movimiento y desaparición
-  llave.setAttribute('animation', {
-    property: 'position',
-    to: `${posCandado.x} ${posCandado.y} ${posCandado.z}`,
-    dur: 1000,
-    easing: 'easeInOutQuad'
-  });
-  
-  // Hacer la llave más pequeña mientras se mueve
-  llave.setAttribute('animation__scale', {
-    property: 'scale',
-    to: '0 0 0',
-    dur: 1000,
-    easing: 'easeInQuad'
-  });
-  
-  // Ocultar después de la animación
-  setTimeout(() => {
-    llave.setAttribute('visible', false);
-  }, 1000);
-}
-
 function desbloquearTesoro() {
-  console.log("Tesoro desbloqueado");
-  
   const botonDesbloquearTesoro = document.getElementById("botonDesbloquearTesoro");
   botonDesbloquearTesoro.style.display = 'none';
   
-  // Animar todas las llaves simultáneamente
-  if (tieneLlave1) animarLlaveHaciaCandadoSimple('llave1', 'candado1');
-  if (tieneLlave2) animarLlaveHaciaCandadoSimple('llave2', 'candado2');
-  if (tieneLlave3) animarLlaveHaciaCandadoSimple('llave3', 'candado3');
-  
-  // Mostrar mensaje de éxito
-  setTimeout(mostrarTesoroDesbloqueado, 1200);
+  setTimeout(() => {
+    ocultarCandado(1);
+  }, 800);
+
+  setTimeout(() => {
+    ocultarCandado(2);
+  }, 1200);
+
+  setTimeout(() => {
+    ocultarCandado(3);
+  }, 1600);
+
+  setTimeout(() => {
+    aparecerTesoro();
+  }, 2000);
+}
+
+function ocultarCandado(numCandado) {
+  const candado = document.querySelector(`#candado${numCandado}`);
+  candado.setAttribute('visible', false);
+}
+
+function aparecerTesoro() {
+  const tesoro = document.getElementById("tesoro");
+  tesoro.setAttribute('visible', true);
+}
+
+function continuarComic() {
+  if (pasoComic === 1) {
+    document.getElementById("imagenComic").setAttribute('src', 'Imagenes/comic2.png');
+  }
+  else if (pasoComic === 2) {
+    document.getElementById("overlayInicio").style.display = "none";
+    document.getElementById("botonComic").style.display = "none";
+  }
+
+  pasoComic += 1;
 }

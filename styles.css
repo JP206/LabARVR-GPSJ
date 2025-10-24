@@ -173,3 +173,54 @@ img {
     font-size: 16px;
     display: none;
 }
+
+#overlayInicio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  flex-direction: column; /* permite espacio para el botón */
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 1s ease;
+  padding-bottom: 80px; /* deja espacio para el botón */
+}
+
+#overlayInicio img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene relación de aspecto y evita recortes */
+  max-width: 100vw;
+  max-height: calc(100vh - 100px); /* deja margen inferior visible */
+  pointer-events: none;
+}
+
+#botonComic {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid var(--color-principal);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--color-principal);
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: var(--brillo);
+}
+
+
+#botonComic {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    width: auto;
+    padding: 12px 24px;
+    font-size: 16px;
+}
