@@ -20,6 +20,9 @@ window.addEventListener("load", () => {
       } else if (marker.id === "marcador3") {
         entraLlave3();
       }
+      else if (marker.id === "marcador4") {
+        sincronizarLlavesMarcador4();
+      }
     });
 
     marker.addEventListener("markerLost", () => {
@@ -94,7 +97,7 @@ function saleLlave3() {
   enLlave3 = false;
 
   const formulario = document.getElementById("formularioLlave");
-  focultarFormularioLlave()
+  ocultarFormularioLlave()
 }
 
 //formulario inicial
@@ -276,6 +279,8 @@ function reclamarLlave() {
 
     let botonReclamarLlave = document.getElementById("botonReclamarLlave");
     botonReclamarLlave.style.display = 'none';
+
+    actualizarTextoMisiones()
 }
 
 function mostrarFormularioLlave() {
@@ -288,4 +293,64 @@ function ocultarFormularioLlave() {
     const formulario = document.getElementById('formularioLlave');
     formulario.classList.remove('hacerVisible');
     formulario.classList.add('desaparecer');
+}
+
+function actualizarTextoMisiones() {
+  if (tieneLlave1) {
+    document.getElementById("mision1").classList.add("completada");
+  }
+  if (tieneLlave2) {
+    document.getElementById("mision2").classList.add("completada");
+  }
+  if (tieneLlave3) {
+    document.getElementById("mision3").classList.add("completada");
+  }
+  if (tieneLlave1 && tieneLlave2 && tieneLlave3) {
+    document.getElementById("mision4").classList.add("completada");
+  }
+}
+
+function aparecerLlaves(llave) {
+  switch (llave) {
+    case 1:
+      if (tieneLlave1) {  // ← Verificar que realmente tenga la llave
+        const llave1 = document.querySelector('#llave1');
+        llave1.setAttribute('visible', true);
+      }
+      break;
+    case 2:
+      if (tieneLlave2) {  // ← Verificar que realmente tenga la llave
+        const llave2 = document.querySelector('#llave2');
+        llave2.setAttribute('visible', true);
+      }
+      break;
+    case 3:
+      if (tieneLlave3) {  // ← Verificar que realmente tenga la llave
+        const llave3 = document.querySelector('#llave3');
+        llave3.setAttribute('visible', true);
+      }
+      break;
+  }
+
+  // Verificar si mostrar el botón del tesoro
+  if (tieneLlave1 && tieneLlave2 && tieneLlave3) {
+    const botonDesbloquearTesoro = document.getElementById("botonDesbloquearTesoro");
+    botonDesbloquearTesoro.style.display = 'block';
+  }
+}
+
+function desbloquearTesoro() {
+  console.log("Tesoro desbloqueado");
+}
+
+function sincronizarLlavesMarcador4() {
+  // Ocultar todas las llaves primero
+  document.querySelector('#llave1').setAttribute('visible', false);
+  document.querySelector('#llave2').setAttribute('visible', false);
+  document.querySelector('#llave3').setAttribute('visible', false);
+  
+  // Mostrar solo las que el jugador tenga
+  if (tieneLlave1) aparecerLlaves(1);
+  if (tieneLlave2) aparecerLlaves(2);
+  if (tieneLlave3) aparecerLlaves(3);
 }
