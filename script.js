@@ -379,6 +379,7 @@ function reclamarLlave() {
     objeto.removeAttribute("geometry");
     objeto.removeAttribute("material");
     objeto.setAttribute("gltf-model", "Modelos/llave1.glb");
+    objeto.setAttribute("rotation", "90 180 0");
     document.getElementById('textoFig1').setAttribute("value", "");
   }
   else if (enLlave2) {
@@ -388,6 +389,7 @@ function reclamarLlave() {
     objeto.removeAttribute("geometry");
     objeto.removeAttribute("material");
     objeto.setAttribute("gltf-model", "Modelos/llave2.glb");
+    objeto.setAttribute("rotation", "0 -90 90");
   }
   else if (enLlave3) {
     tieneLlave3 = true;
