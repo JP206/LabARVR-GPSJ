@@ -11,6 +11,8 @@ let tiempoInicio = 0;
 
 let pasoComic = 1;
 
+let errores = 0;
+
 window.addEventListener("load", () => {
   const markers = document.querySelectorAll("a-marker");
 
@@ -126,7 +128,7 @@ function seleccionarJugador(opcion) {
 function cargarFormulario() {
   const botones = document.querySelectorAll('#formularioLlave .opcion');
   const titulo = document.querySelector('#formularioLlave h3');
-  
+
   if (enLlave1) {
     if (numJugador === 1) {
       titulo.textContent = '¿Qué texto tiene el jugador 2?';
@@ -175,13 +177,13 @@ function cargarFormulario() {
       botones[2].textContent = 'Rosado';
     }
     else if (numJugador === 2) {
-      titulo.textContent = '¿Qué figura tiene el jugador 3?';
+      titulo.textContent = '¿Qué color tiene el jugador 3?';
       botones[1].textContent = 'Amarillo';
       botones[0].textContent = 'Blanco';
       botones[2].textContent = 'Rosado';
     }
     else if (numJugador === 3) {
-      titulo.textContent = '¿Qué figura tiene el jugador 1?';
+      titulo.textContent = '¿Qué color tiene el jugador 1?';
       botones[2].textContent = 'Amarillo';
       botones[1].textContent = 'Blanco';
       botones[0].textContent = 'Rosado';
@@ -193,6 +195,121 @@ function cargarFormulario() {
 function seleccionar(opcion) {
   const botonReclamarLlave = document.getElementById("botonReclamarLlave");
   botonReclamarLlave.style.display = 'block';
+
+  if (enLlave1) {
+    if (numJugador === 1) {
+      if (opcion != 2) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+  }
+  else if (numJugador === 2) {
+    if (opcion != 1) {
+      errores += 1;
+      console.log("Errores: " + errores);
+      const sonido = new Audio('Sonidos/error.mp3');
+      sonido.play();
+    }
+    else {
+      const sonido = new Audio('Sonidos/exito.mp3');
+      sonido.play();
+    }
+  }
+  else if (numJugador === 3) {
+    if (opcion != 2) {
+      errores += 1;
+      console.log("Errores: " + errores);
+      const sonido = new Audio('Sonidos/error.mp3');
+      sonido.play();
+    }
+    else {
+      const sonido = new Audio('Sonidos/exito.mp3');
+      sonido.play();
+    }
+  }
+  else if (enLlave2) {
+    if (numJugador === 1) {
+      if (opcion != 1) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+    else if (numJugador === 2) {
+      if (opcion != 3) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+    else if (numJugador === 3) {
+      if (opcion != 2) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+  }
+  else if (enLlave3) {
+    if (numJugador === 1) {
+      if (opcion != 2) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+    else if (numJugador === 2) {
+      if (opcion != 3) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+    else if (numJugador === 3) {
+      if (opcion != 3) {
+        errores += 1;
+        console.log("Errores: " + errores);
+        const sonido = new Audio('Sonidos/error.mp3');
+        sonido.play();
+      }
+      else {
+        const sonido = new Audio('Sonidos/exito.mp3');
+        sonido.play();
+      }
+    }
+  }
 
   const formulario = document.getElementById("formularioLlave");
   formulario.style.display = 'none';
@@ -257,46 +374,46 @@ function actualizarHTMLsegunJugador() {
 
 function reclamarLlave() {
   if (enLlave1) {
-      tieneLlave1 = true;
-      let objeto = document.getElementById("fig1");
-      objeto.removeAttribute("geometry");
-      objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "Modelos/llave1.glb");
-      document.getElementById('textoFig1').setAttribute("value", "");
-    }
-    else if (enLlave2) {
-      tieneLlave2 = true;
+    tieneLlave1 = true;
+    let objeto = document.getElementById("fig1");
+    objeto.removeAttribute("geometry");
+    objeto.removeAttribute("material");
+    objeto.setAttribute("gltf-model", "Modelos/llave1.glb");
+    document.getElementById('textoFig1').setAttribute("value", "");
+  }
+  else if (enLlave2) {
+    tieneLlave2 = true;
 
-      let objeto = document.getElementById("fig2");
-      objeto.removeAttribute("geometry");
-      objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "Modelos/llave2.glb");
-    }
-    else if (enLlave3) {
-      tieneLlave3 = true;
+    let objeto = document.getElementById("fig2");
+    objeto.removeAttribute("geometry");
+    objeto.removeAttribute("material");
+    objeto.setAttribute("gltf-model", "Modelos/llave2.glb");
+  }
+  else if (enLlave3) {
+    tieneLlave3 = true;
 
-      let objeto = document.getElementById("fig3");
-      objeto.removeAttribute("geometry");
-      objeto.removeAttribute("material");
-      objeto.setAttribute("gltf-model", "Modelos/llave3.glb");
-    }
+    let objeto = document.getElementById("fig3");
+    objeto.removeAttribute("geometry");
+    objeto.removeAttribute("material");
+    objeto.setAttribute("gltf-model", "Modelos/llave3.glb");
+  }
 
-    let botonReclamarLlave = document.getElementById("botonReclamarLlave");
-    botonReclamarLlave.style.display = 'none';
+  let botonReclamarLlave = document.getElementById("botonReclamarLlave");
+  botonReclamarLlave.style.display = 'none';
 
-    actualizarTextoMisiones()
+  actualizarTextoMisiones()
 }
 
 function mostrarFormularioLlave() {
-    const formulario = document.getElementById('formularioLlave');
-    formulario.classList.add('hacerVisible'); // se mueve al bottom:10%
-    formulario.classList.remove('desaparecer');
+  const formulario = document.getElementById('formularioLlave');
+  formulario.classList.add('hacerVisible'); // se mueve al bottom:10%
+  formulario.classList.remove('desaparecer');
 }
 
 function ocultarFormularioLlave() {
-    const formulario = document.getElementById('formularioLlave');
-    formulario.classList.remove('hacerVisible');
-    formulario.classList.add('desaparecer');
+  const formulario = document.getElementById('formularioLlave');
+  formulario.classList.remove('hacerVisible');
+  formulario.classList.add('desaparecer');
 }
 
 function actualizarTextoMisiones() {
@@ -348,7 +465,7 @@ function sincronizarLlavesMarcador4() {
   document.querySelector('#llave1').setAttribute('visible', false);
   document.querySelector('#llave2').setAttribute('visible', false);
   document.querySelector('#llave3').setAttribute('visible', false);
-  
+
   // Mostrar solo las que el jugador tenga
   if (tieneLlave1) aparecerLlaves(1);
   if (tieneLlave2) aparecerLlaves(2);
@@ -358,7 +475,7 @@ function sincronizarLlavesMarcador4() {
 function desbloquearTesoro() {
   const botonDesbloquearTesoro = document.getElementById("botonDesbloquearTesoro");
   botonDesbloquearTesoro.style.display = 'none';
-  
+
   setTimeout(() => {
     ocultarCandado(1);
   }, 800);
@@ -377,6 +494,9 @@ function desbloquearTesoro() {
 }
 
 function ocultarCandado(numCandado) {
+  const sonido = new Audio('Sonidos/abrirCandado.mp3');
+  sonido.play();
+
   const candado = document.querySelector(`#candado${numCandado}`);
   candado.setAttribute('visible', false);
 }
@@ -384,6 +504,16 @@ function ocultarCandado(numCandado) {
 function aparecerTesoro() {
   const tesoro = document.getElementById("tesoro");
   tesoro.setAttribute('visible', true);
+
+  const sonido = new Audio('Sonidos/sagrado.mp3');
+  sonido.play();
+
+  const tiempoFin = Date.now();
+  const diferencia = tiempoFin - tiempoInicio; // en milisegundos
+  const segundos = Math.floor(diferencia / 1000);
+
+  let textoStats = document.getElementById("textoStats");
+  textoStats.setAttribute("value", "Tiempo: " + segundos + "s\tErrores: " + errores);
 }
 
 function continuarComic() {
@@ -391,6 +521,7 @@ function continuarComic() {
     document.getElementById("imagenComic").setAttribute('src', 'Imagenes/comic2.png');
   }
   else if (pasoComic === 2) {
+    tiempoInicio = Date.now();
     document.getElementById("overlayInicio").style.display = "none";
     document.getElementById("botonComic").style.display = "none";
   }
