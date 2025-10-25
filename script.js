@@ -4,6 +4,7 @@ let enLlave3 = false;
 let tieneLlave1 = false;
 let tieneLlave2 = false;
 let tieneLlave3 = false;
+let abrioCandado = false;
 
 let numJugador = -1;
 
@@ -428,7 +429,7 @@ function actualizarTextoMisiones() {
   if (tieneLlave3) {
     document.getElementById("mision3").classList.add("completada");
   }
-  if (tieneLlave1 && tieneLlave2 && tieneLlave3) {
+  if (tieneLlave1 && tieneLlave2 && tieneLlave3 && abrioCandado) {
     document.getElementById("mision4").classList.add("completada");
   }
 }
@@ -477,6 +478,8 @@ function sincronizarLlavesMarcador4() {
 function desbloquearTesoro() {
   const botonDesbloquearTesoro = document.getElementById("botonDesbloquearTesoro");
   botonDesbloquearTesoro.style.display = 'none';
+  abrioCandado = true;
+  actualizarTextoMisiones()
 
   setTimeout(() => {
     ocultarCandado(1);
